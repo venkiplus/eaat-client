@@ -1,0 +1,35 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans|Pacifico');
+
+.App {
+  text-align: center;
+}
+
+.App .logo{
+  color: #fff;
+  font-size: 6em;
+  font-family: 'Pacifico', cursive;
+}
+
+.App .logo-small{
+  color: #fff;
+  font-size: 3em;
+  text-align: left;
+  font-family: 'Pacifico', cursive;
+}
+
+.App .tag-line{
+  color: #fff;
+  font-size: 1.5em;
+  margin:10px 0;
+}
+
+.App .location-dropdown{
+  width: 400px;
+}
+
+.restaurant-banner{
+  width:300px;
+  padding:20px;
+  border-radius: 6px;
+  background-color: #eee;
+}
