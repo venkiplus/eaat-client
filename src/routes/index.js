@@ -11,7 +11,6 @@ function Routes() {
     <Router>
       <Container>
         <Route exact path="/" component={HomeContainer} />
-        <Route path="/counter" component={CounterContainer} />
       </Container>
     </Router>
   )

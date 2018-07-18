@@ -1,0 +1,29 @@
+{
+  "copperleaf":{
+    "restaurantId": "GA02-1001",
+    "name": "Copperleaf",
+    "type": "Goan, NorthIndian",
+    "rating": "4.3",
+    "owner" : "Govenkar",
+    "address" : "Chogm road, Porvorim",
+    "locationId": "GA-02"
+  },
+  "bhojan":{
+    "restaurantId": "GA02-1002",
+    "name": "Bhojan",
+    "type": "Goan, NorthIndian",
+    "rating": "4.5",
+    "owner" : "Govenkar",
+    "address" : "Chogm road, Porvorim",
+    "locationId": "GA-02"
+  },
+  "bawarchi":{
+    "restaurantId": "GA02-1003",
+    "name": "Bawarchi - The Royal Chef",
+    "type": "Goan, NorthIndian",
+    "rating": "4.3",
+    "owner" : "Govenkar",
+    "address" : "Chogm road, Porvorim",
+    "locationId": "GA-02"
+  }
+}

@@ -7,20 +7,30 @@ import 'styles/App.css';
 import 'antd/dist/antd.css';
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
-import * as CounterActions from 'actions/counter'
-
+import * as LocationActions from 'actions/locations'
 const { Content, Footer, Header } = Layout;
 const Option = Select.Option;
 
 class HomeContainer extends React.Component {
-  static propTypes = {
-    handleChange: PropTypes.func.isRequired
+
+  constructor(props){
+    super(props)
+    this.props.getLocations()
+    this.state = {
+      locations: null
+    }
+    this.handleChange.bind(this)
   }
 
-  handleChange(value) {
-    window.location.href = `/${value}/restaurants`;
+  handleChange(value, text) {
     console.log(`selected ${value}`);
   }
+
+  componentWillReceiveProps(nextProps){
+    this.setState({locations:nextProps.locations.locations},()=>console.log(this.state.locations))
+  }
+
+
 
   render() {
     return (
@@ -39,16 +49,11 @@ class HomeContainer extends React.Component {
                     placeholder="Select location"
                     optionFilterProp="children"
                     onChange={this.handleChange}
-                    onFocus={this.handleFocus}
-                    onBlur={this.handleBlur}
                     filterOption={(input, option) => option.props.children.toLowerCase().indexOf(input.toLowerCase()) >= 0}
                   >
-                    <Option value="Panjim">Panjim</Option>
-                    <Option value="Porvorim">Porvorim</Option>
-                    <Option value="Baga">Baga</Option>
-                    <Option value="Calungute">Calungute</Option>
-                    <Option value="Arpora">Arpora</Option>
-                    <Option value="Candolim">Candolim</Option>
+                  {this.state.locations &&
+                    this.state.locations.map((item)=><Option value={item.locationId}>{item.name}</Option>)
+                  }
                   </Select>
                </Col>
              </Row>
@@ -64,15 +69,19 @@ class HomeContainer extends React.Component {
   }
 }
 
-const mapStateToProps = createStructuredSelector({
-  counter: createSelector(
-    (state) => state.counter,
-    (counterState) => counterState
-  ),
-})
+HomeContainer.propTypes = {
+  handleChange: PropTypes.func
+}
+
+
+const mapStateToProps = (state)=>{
+    return {
+      locations: state.locations
+    }
+}
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators(CounterActions, dispatch)
+  return bindActionCreators(LocationActions, dispatch)
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(HomeContainer)
